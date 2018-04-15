@@ -116,9 +116,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Card.h" />
+    <ClInclude Include="CreatureCard.h" />
+    <ClInclude Include="SpellCard.h" />
+    <ClInclude Include="SubjectCard.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Card.cpp" />
+    <ClCompile Include="CreatureCard.cpp" />
+    <ClCompile Include="SpellCard.cpp" />
+    <ClCompile Include="SubjectCard.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
