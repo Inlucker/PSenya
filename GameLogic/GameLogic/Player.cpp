@@ -5,20 +5,21 @@ Card::Card(string _name)
 {
 }
 
-
-Player::Player()
+void Card::cast()
 {
-	library.push_back(new Card("card1"));
-	library.push_back(new Card("card2"));
-	library.push_back(new Card("card3"));
+	// Cast virtual method
 }
 
+Player::Player(list<Card*> _library)
+{
+	library = _library;
+}
 
 Player::~Player()
 {
 }
 
-Card * Player::getCardFromLibrary(string _name)
+Card* Player::getCardFromLibrary(string _name)
 {
 	for (const auto& i : library)
 	{
@@ -28,9 +29,49 @@ Card * Player::getCardFromLibrary(string _name)
 	return NULL;
 }
 
-void Player::drawCard(string _name)
+Card* Player::getCardFromHand(string _name)
 {
-	Card* drawnCard = getCardFromLibrary(_name);
+	for (const auto& i : hand)
+	{
+		if (_name == i->name)
+			return i;
+	}
+	return NULL;
+}
+
+Card* Player::getCardFromBoard(string _name)
+{
+	for (const auto& i : board)
+	{
+		if (_name == i->name)
+			return i;
+	}
+	return NULL;
+}
+
+Card* Player::getCardFromGraveyard(string _name)
+{
+	for (const auto& i : graveyard)
+	{
+		if (_name == i->name)
+			return i;
+	}
+	return NULL;
+}
+
+Card* Player::getCardFromAstral(string _name)
+{
+	for (const auto& i : astral)
+	{
+		if (_name == i->name)
+			return i;
+	}
+	return NULL;
+}
+
+void Player::drawCard()
+{
+	Card* drawnCard = library.back();
 	if (drawnCard != NULL)
 	{
 		library.remove(drawnCard);
@@ -40,4 +81,9 @@ void Player::drawCard(string _name)
 	{
 		cout << "There is no card in library with this name";
 	}
+}
+
+void Player::castCard(Card* castingCard)
+{
+	castingCard->cast();
 }
